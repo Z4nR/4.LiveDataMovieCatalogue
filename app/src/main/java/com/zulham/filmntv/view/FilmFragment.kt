@@ -54,7 +54,7 @@ class FilmFragment : Fragment() {
     }
 
     private fun recyclerV(films: ArrayList<DataModel>){
-        recyclerV_movie.apply {
+        recyclerV.apply {
             adapter = FilmAdapter(films, object : FilmAdapter.OnItemClicked {
                 override fun onItemClick(position: Int) {
                     Toast.makeText(context, films[position].title+" Clicked", Toast.LENGTH_SHORT).show()

@@ -6,7 +6,7 @@
     tools:context=".view.TVFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerV_tv"
+        android:id="@+id/recyclerV"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/item">
