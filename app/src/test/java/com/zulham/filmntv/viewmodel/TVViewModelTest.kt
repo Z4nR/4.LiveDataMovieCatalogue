@@ -17,12 +17,6 @@ class TVViewModelTest {
     }
 
     @Test
-    fun setDetail() {
-        val tvDetail = tvViewModel.setData()
-        assertNotNull(tvDetail)
-    }
-
-    @Test
     fun getDetail() {
         val tvDetail = tvViewModel.getData()
         assertNotNull(tvDetail)

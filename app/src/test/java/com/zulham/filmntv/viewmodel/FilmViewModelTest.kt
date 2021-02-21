@@ -19,12 +19,6 @@ class FilmViewModelTest {
     }
 
     @Test
-    fun setDetail() {
-        val filmDetail = filmViewModel.setData()
-        assertNotNull(filmDetail)
-    }
-
-    @Test
     fun getDetail() {
         val filmDetail = filmViewModel.getData()
         assertNotNull(filmDetail)
