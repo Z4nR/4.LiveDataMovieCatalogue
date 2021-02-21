@@ -3,6 +3,8 @@ package com.zulham.filmntv.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.zulham.filmntv.model.DataModel
 import com.zulham.filmntv.R
 import com.zulham.filmntv.viewmodel.DetailViewModel
@@ -32,7 +34,10 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun showDetail(mov: DataModel){
-        mov.let { img_poster_detail.setImageResource(it.img) }
+        Glide.with(this)
+            .load(mov.img)
+            .apply(RequestOptions().override(1000, 1000))
+            .into(img_poster_detail)
         title_detail.text = mov.title
         genre_detail.text = mov.genre
         release_detail.text = mov.releaseDate

@@ -1,9 +1,5 @@
 package com.zulham.filmntv.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import com.zulham.filmntv.model.DataFilm
-import com.zulham.filmntv.model.DataModel
 import org.junit.Test
 
 import org.junit.Assert.*

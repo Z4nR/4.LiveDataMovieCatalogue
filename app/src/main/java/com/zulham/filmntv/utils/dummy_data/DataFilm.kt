@@ -1,6 +1,7 @@
-package com.zulham.filmntv.model
+package com.zulham.filmntv.utils.dummy_data
 
 import com.zulham.filmntv.R
+import com.zulham.filmntv.model.DataModel
 
 object DataFilm {
 
@@ -93,7 +94,7 @@ object DataFilm {
                         filmgenre[position],
                         filmproduction[position],
                         filmdesc[position],
-                        filmimg[position]
+                        filmimg[position].toString()
                 ))
             }
 

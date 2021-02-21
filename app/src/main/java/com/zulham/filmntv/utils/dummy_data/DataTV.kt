@@ -1,6 +1,7 @@
-package com.zulham.filmntv.model
+package com.zulham.filmntv.utils.dummy_data
 
 import com.zulham.filmntv.R
+import com.zulham.filmntv.model.DataModel
 
 object DataTV {
     private val filmtitle = arrayOf(
@@ -92,7 +93,7 @@ object DataTV {
                         filmgenre[position],
                         filmproduction[position],
                         filmdesc[position],
-                        filmimg[position]
+                        filmimg[position].toString()
                 ))
             }
 

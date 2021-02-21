@@ -1,7 +1,7 @@
 package com.zulham.filmntv.viewmodel
 
 import com.zulham.filmntv.R
-import com.zulham.filmntv.model.DataFilm
+import com.zulham.filmntv.utils.dummy_data.DataFilm
 import com.zulham.filmntv.model.DataModel
 import org.junit.Test
 

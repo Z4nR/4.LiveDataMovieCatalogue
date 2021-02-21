@@ -1,6 +1,5 @@
 package com.zulham.filmntv.model
 
-import android.os.Parcel
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
@@ -11,5 +10,5 @@ data class DataModel(
     val genre: String?,
     val production: String?,
     val desc: String?,
-    val img: Int
+    val img: String
 ): Parcelable

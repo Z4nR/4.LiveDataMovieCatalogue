@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.zulham.filmntv.model.DataModel
-import com.zulham.filmntv.model.DataTV
+import com.zulham.filmntv.utils.dummy_data.DataTV
 
 class TVViewModel: ViewModel() {
     private val listTV = MutableLiveData<ArrayList<DataModel>>()

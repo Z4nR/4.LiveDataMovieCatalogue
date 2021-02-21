@@ -10,9 +10,8 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.zulham.filmntv.R
 import com.zulham.filmntv.adapter.FilmAdapter.ViewHolder
-import com.zulham.filmntv.model.DataFilm
-import com.zulham.filmntv.model.DataModel
-import com.zulham.filmntv.model.DataTV
+import com.zulham.filmntv.utils.dummy_data.DataFilm
+import com.zulham.filmntv.utils.dummy_data.DataTV
 import org.hamcrest.core.AllOf.allOf
 import org.junit.Rule
 import org.junit.Test

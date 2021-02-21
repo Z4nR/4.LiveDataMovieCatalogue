@@ -18,7 +18,7 @@ class FilmAdapter(private val listItems: List<DataModel>, private val mListener:
             with(itemView){
                 Glide.with(itemView.context)
                     .load(item.img)
-                    .apply(RequestOptions().override(1000, 1000))
+                    .apply(RequestOptions().override(110, 110))
                     .into(img_poster)
 
 
