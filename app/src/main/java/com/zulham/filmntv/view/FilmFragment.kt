@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +14,7 @@ import com.zulham.filmntv.adapter.FilmAdapter
 import com.zulham.filmntv.viewmodel.FilmViewModel
 import com.zulham.filmntv.R
 import kotlinx.android.synthetic.main.fragment_film.*
+import kotlin.collections.ArrayList
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -53,15 +53,20 @@ class FilmFragment : Fragment() {
         )
     }
 
-    private fun recyclerV(films: ArrayList<DataModel>){
+    private fun recyclerV(films: ArrayList<DataModel>) {
         recyclerV.apply {
-            adapter = FilmAdapter(films, object : FilmAdapter.OnItemClicked {
-                override fun onItemClick(position: Int) {
-                    Toast.makeText(context, films[position].title+" Clicked", Toast.LENGTH_SHORT).show()
+            val filmAdapter = FilmAdapter(films)
+
+            adapter = filmAdapter
+
+            filmAdapter.setOnItemClickCallback(object : FilmAdapter.OnItemClickCallback{
+                override fun onItemClicked(data: DataModel) {
                     val intent = Intent(context, DetailActivity::class.java)
-                    intent.putExtra("film", films[position])
+                    val movie = data.id.toString()
+                    intent.putExtra("film", movie)
                     startActivity(intent)
                 }
+
             })
 
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)

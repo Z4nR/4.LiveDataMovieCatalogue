@@ -31,6 +31,8 @@ class FilmViewModel: ViewModel() {
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {
 
+                Log.DEBUG
+
                 val result = String(responseBody)
 
                 try {
@@ -40,18 +42,14 @@ class FilmViewModel: ViewModel() {
                     for (i in 0 until items.length()){
                         val jsonObj = items.getJSONObject(i)
                         listMovie.add(
-                                DataModel(
-                                        title = jsonObj.getString("title"),
-                                        releaseDate = jsonObj.getString("release_date"),
+                            DataModel(
+                                id = jsonObj.getInt("id"),
+                                title = jsonObj.getString("title"),
+                                releaseDate = jsonObj.getString("release_date"),
+                                vote = jsonObj.getString("vote_average"),
+                                img = "https://image.tmdb.org/t/p/w500/" + jsonObj.getString("poster_path")
 
-                                    //production
-                                        production = jsonObj.getString("popularity"),
-                                    //genres
-                                        genre = jsonObj.getString("id"),
-
-                                        desc = jsonObj.getString("overview"),
-                                        img = jsonObj.getString("poster_path")
-                                )
+                            )
                         )
 
                     }

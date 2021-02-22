@@ -7,11 +7,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.zulham.filmntv.R
+import com.zulham.filmntv.adapter.FilmAdapter.ViewHolder
 import com.zulham.filmntv.model.DataModel
+import com.zulham.filmntv.model.DataModelDetail
 import kotlinx.android.synthetic.main.item.view.*
 
-class FilmAdapter(private val listItems: List<DataModel>, private val mListener: OnItemClicked)
-    : RecyclerView.Adapter<FilmAdapter.ViewHolder>() {
+class FilmAdapter(private val listItems: ArrayList<DataModel>)
+    : RecyclerView.Adapter<ViewHolder>() {
+
+    private var onItemClickCallback: OnItemClickCallback? = null
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: DataModel)
+    }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(item: DataModel){
@@ -24,19 +36,16 @@ class FilmAdapter(private val listItems: List<DataModel>, private val mListener:
 
                 tv_item_title.text = item.title
                 tv_item_date.text = item.releaseDate
-                tv_item_genre.text = item.genre
+                tv_item_vote.text = item.vote
 
-                itemView.setOnClickListener {
-                    @Suppress("DEPRECATION")
-                    mListener.onItemClick(position)
+                itemView.setOnClickListener { onItemClickCallback?.onItemClicked(item) }
                 }
             }
         }
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item, parent, false)
+                .inflate(R.layout.item, parent, false)
         return ViewHolder(itemView)
     }
 
@@ -44,11 +53,5 @@ class FilmAdapter(private val listItems: List<DataModel>, private val mListener:
         holder.bind(listItems[position])
     }
 
-    override fun getItemCount(): Int {
-        return listItems.size
-    }
-
-    interface OnItemClicked {
-        fun onItemClick(position: Int)
-    }
+    override fun getItemCount(): Int = listItems.size
 }

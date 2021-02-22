@@ -55,13 +55,18 @@ class TVFragment : Fragment() {
 
     private fun recyclerV(tvs: ArrayList<DataModel>){
         recyclerV.apply {
-            adapter = FilmAdapter(tvs, object : FilmAdapter.OnItemClicked {
-                override fun onItemClick(position: Int) {
-                    Toast.makeText(context, tvs[position].title+" Clicked", Toast.LENGTH_SHORT).show()
+            val tvAdapter = FilmAdapter(tvs)
+
+            adapter = tvAdapter
+
+            tvAdapter.setOnItemClickCallback(object : FilmAdapter.OnItemClickCallback{
+                override fun onItemClicked(data: DataModel) {
                     val intent = Intent(context, DetailActivity::class.java)
-                    intent.putExtra("film", tvs[position])
+                    val tv = data.title
+                    intent.putExtra("film", tv)
                     startActivity(intent)
                 }
+
             })
 
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)

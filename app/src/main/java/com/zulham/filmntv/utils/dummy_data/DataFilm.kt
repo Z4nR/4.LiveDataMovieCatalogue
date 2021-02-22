@@ -2,8 +2,9 @@ package com.zulham.filmntv.utils.dummy_data
 
 import com.zulham.filmntv.R
 import com.zulham.filmntv.model.DataModel
+import com.zulham.filmntv.model.DataModelDetail
 
-object DataFilm {
+/*object DataFilm {
 
     private val filmtitle = arrayOf(
             "Jumanji",
@@ -84,11 +85,11 @@ object DataFilm {
 
     )
 
-    val list: ArrayList<DataModel>
+    val list: ArrayList<DataModelDetail>
         get() {
-            val list: ArrayList<DataModel> = arrayListOf()
+            val list: ArrayList<DataModelDetail> = arrayListOf()
             for (position in filmtitle.indices) {
-                list.add(DataModel(
+                list.add(DataModelDetail(
                         filmtitle[position],
                         filmrelease[position],
                         filmgenre[position],
@@ -100,4 +101,4 @@ object DataFilm {
 
             return list
         }
-}
+}*/
