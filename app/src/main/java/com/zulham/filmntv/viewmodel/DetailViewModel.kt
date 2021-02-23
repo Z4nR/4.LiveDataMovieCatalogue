@@ -1,6 +1,5 @@
 package com.zulham.filmntv.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,6 +8,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler
 import com.zulham.filmntv.model.DataModelDetail
 import cz.msebera.android.httpclient.Header
 import org.json.JSONObject
+import java.lang.Integer.parseInt
 
 class DetailViewModel: ViewModel() {
     private val detailShow = MutableLiveData<DataModelDetail>()
@@ -21,7 +21,7 @@ class DetailViewModel: ViewModel() {
 
         val client = AsyncHttpClient()
 
-        val url = "https://api.themoviedb.org/3/movies/$id?api_key=9ca2038021928e3fd76667cb05f853e0&page=1"
+        val url = "https://api.themoviedb.org/3/movie/${parseInt(id)}?api_key=9ca2038021928e3fd76667cb05f853e0"
 
         client.addHeader("Authorization :", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5Y2EyMDM4MDIxOTI4ZTNmZDc2NjY3Y2IwNWY4NTNlMCIsInN1YiI6IjYwMzI1NGZlMGE1MTdjMDA0MTk0NWMxNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.WRCFHSb3ezZV33wFOgAnaQMvs0nz3uZjq_ADpgKNpxs")
         client.addHeader("Content-Type:", "application/json;charset=utf-8")
@@ -37,8 +37,9 @@ class DetailViewModel: ViewModel() {
                     val res = result?.let { JSONObject(result) }
 
                     if (res != null) {
+                        isError.value = false
                         val detail = DataModelDetail(
-                            img = "https://image.tmdb.org/t/p/w500/" + res.getString("backdrop_path"),
+                            img = "https://image.tmdb.org/t/p/w500/" + res.getString("poster_path"),
                             title = res.getString("title"),
                             desc = checkNullToString(res, "overview"),
                             releaseDate = checkNullToString(res, "release_date"),
@@ -48,8 +49,6 @@ class DetailViewModel: ViewModel() {
                         )
 
                         detailShow.value = detail
-
-                    } else {
 
                     }
 

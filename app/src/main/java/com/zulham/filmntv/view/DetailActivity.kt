@@ -3,14 +3,15 @@ package com.zulham.filmntv.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.zulham.filmntv.model.DataModel
 import com.zulham.filmntv.R
 import com.zulham.filmntv.model.DataModelDetail
 import com.zulham.filmntv.viewmodel.DetailViewModel
 import kotlinx.android.synthetic.main.activity_detail.*
+import kotlin.math.log
 
 class DetailActivity : AppCompatActivity() {
 
@@ -26,17 +27,26 @@ class DetailActivity : AppCompatActivity() {
 
         val movie = intent.getStringExtra("film")
 
-        Log.DEBUG
+        Log.d(movie, "ANJAY")
 
         detailViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(DetailViewModel::class.java)
 
         movie?.let { detailViewModel.setDetail(it) }
 
-        detailViewModel.getDetail().observe(this, {
-            showDetail()
+        detailViewModel.getIsError().observe(this, {
+            when (it) {
+                true -> showErrorMessage()
+                else -> showDetail()
+            }
         })
 
 
+    }
+
+    private fun showErrorMessage() {
+        detailViewModel.getErrorMessage().observe(this, {
+            Toast.makeText(this, it, Toast.LENGTH_LONG).show()
+        })
     }
 
     private fun showDetail(){

@@ -9,5 +9,5 @@ data class DataModel(
     val title: String?,
     val releaseDate: String?,
     val vote: String?,
-    val img: String
+    val img: String?
 ): Parcelable

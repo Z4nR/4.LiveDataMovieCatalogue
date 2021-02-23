@@ -15,7 +15,7 @@ class FilmViewModel: ViewModel() {
 
     private val listFilm = MutableLiveData<ArrayList<DataModel>>()
 
-    private val isError = MutableLiveData<Boolean>()
+    private val isError: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
 
     private val errorMessage = MutableLiveData<String>()
 
@@ -30,8 +30,6 @@ class FilmViewModel: ViewModel() {
         client.addHeader("Content-Type:", "application/json;charset=utf-8")
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {
-
-                Log.DEBUG
 
                 val result = String(responseBody)
 

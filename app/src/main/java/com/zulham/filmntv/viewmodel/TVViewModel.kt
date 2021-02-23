@@ -29,8 +29,6 @@ class TVViewModel: ViewModel() {
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {
 
-                Log.DEBUG
-
                 val result = String(responseBody)
 
                 try {
