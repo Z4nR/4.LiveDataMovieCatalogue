@@ -63,7 +63,7 @@ class TVFragment : Fragment() {
                 override fun onItemClicked(data: DataModel) {
                     val intent = Intent(context, DetailActivity::class.java)
                     val tv = data.title
-                    intent.putExtra("film", tv)
+                    intent.putExtra("TV", tv)
                     startActivity(intent)
                 }
 

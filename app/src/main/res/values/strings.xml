@@ -11,5 +11,6 @@
     <string name="TabTV">TV</string>
     <string name="production">Production</string>
     <string name="overview">Overview</string>
+    <string name="genre">genre</string>
 
 </resources>

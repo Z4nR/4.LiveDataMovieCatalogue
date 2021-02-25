@@ -25,13 +25,15 @@ class DetailActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        //filmfrgament
         val movie = intent.getStringExtra("film")
-
-        Log.d(movie, "ANJAY")
+        //tvfragment
+        val tv = intent.getStringExtra("TV")
 
         detailViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(DetailViewModel::class.java)
 
-        movie?.let { detailViewModel.setDetail(it) }
+        movie?.let { detailViewModel.setFilmDetail(it) }
+        tv?.let { detailViewModel.setTVDetail(it) }
 
         detailViewModel.getIsError().observe(this, {
             when (it) {
@@ -51,7 +53,7 @@ class DetailActivity : AppCompatActivity() {
 
     private fun showDetail(){
 
-        detailViewModel.getDetail().observe(this, {
+        detailViewModel.getFilmDetail().observe(this, {
             detail(it)
         })
 
